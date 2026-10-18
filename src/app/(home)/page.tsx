@@ -7,13 +7,9 @@ import { HandHeartIcon, YoutubeLogoIcon } from "@phosphor-icons/react";
 import home_background from "@/assets/home_background.jpg";
 import Image from "next/image";
 import AboutSnippet from "../components/pages/about_snippet";
-import img1 from "@/assets/service-shots/Daddy_on_the_altar.jpeg";
-import img2 from "@/assets/service-shots/WhatsApp Image 2026-10-08 at 4.19.37 PM.jpeg";
-import img3 from "@/assets/service-shots/random_shot.jpeg";
-import img4 from "@/assets/service-shots/2random_shot.jpeg";
-import LeadersSnippet from "../components/pages/leader_snippet";
 
-const images = [img1, img2, img3, img4];
+import LeadersSnippet from "../components/pages/leader_snippet";
+import WorshipSnippet from "../components/pages/worship_snippet";
 
 const container: Variants = {
   hidden: {},
@@ -24,19 +20,6 @@ const item: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
-
-const programs = [
-  {
-    day: "Sunday",
-    title: "Sunday Service",
-    time: "8:30 AM – 10:00 AM",
-  },
-  {
-    day: "Thursday",
-    title: "Digging Deep",
-    time: "Time to be announced",
-  },
-];
 
 const Home = () => {
   return (
@@ -94,9 +77,9 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link href="/visit">
+                {/* <Link href="/visit">
                   <CustomBtn children="Join us Sunday" />
-                </Link>
+                </Link> */}
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -104,8 +87,9 @@ const Home = () => {
               >
                 <Link href="/live-streams">
                   <CustomBtn
+                    size="lg"
                     variant="secondary"
-                    children="Watch live"
+                    children="Join us live"
                     icon={<YoutubeLogoIcon weight="fill" fill="red" />}
                     iconPosition="right"
                   />
@@ -116,56 +100,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About */}
-
       <AboutSnippet />
-
-      <section className="mx-auto w-full max-w-6xl px-5 py-16">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          {/* Left: programs */}
-          <div>
-            <h1 className="text-3xl font-bold md:text-5xl">Worship with us</h1>
-            <h6 className="mt-2 text-lg text-muted-foreground">Our Programs</h6>
-
-            <div className="mt-8 flex flex-col gap-4">
-              {programs.map((program) => (
-                <div
-                  key={program.day}
-                  className="rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <p className="text-sm font-medium text-primary">
-                    {program.day}
-                  </p>
-                  <h3 className="mt-2 text-xl font-bold">{program.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {program.time}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: picture grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {images.map((src, i) => (
-              <div
-                key={i}
-                className={`relative overflow-hidden rounded-2xl ${
-                  i % 2 === 0 ? "aspect-3/4" : "aspect-square"
-                } ${i % 2 === 1 ? "mt-6" : ""}`}
-              >
-                <Image
-                  src={src}
-                  alt={`Church program ${i + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <WorshipSnippet />
       <LeadersSnippet />
 
       {/* Give */}

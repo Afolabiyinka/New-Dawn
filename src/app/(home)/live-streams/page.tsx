@@ -75,6 +75,7 @@ const LiveStreams = () => {
               target="_blank"
             >
               <CustomBtn
+                size={`lg`}
                 variant="secondary"
                 children="Watch live"
                 icon={<YoutubeLogoIcon weight="fill" fill="red" />}

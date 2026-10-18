@@ -14,12 +14,18 @@ import mensPicture from "@/assets/Men.jpeg";
 import womensPicture from "@/assets/Women.jpeg";
 import youthPicture from "@/assets/Youth.jpeg";
 import outreach from "@/assets/Outreach.jpeg";
+import outreach2 from "@/assets/OUTREACH2.jpeg";
+import firstSunday from "@/assets/Trad.jpeg";
+import choir from "@/assets/choir.jpeg";
 
 const slides = [
-  { src: mensPicture, alt: "Men's ministry" },
-  { src: womensPicture, alt: "Women's ministry" },
-  { src: youthPicture, alt: "Youth ministry" },
-  { src: outreach, alt: "Community outreach" },
+  { id: "mens-ministry", src: mensPicture, alt: "Men's ministry" },
+  { id: "womens-ministry", src: womensPicture, alt: "Women's ministry" },
+  { id: "youth-ministry", src: youthPicture, alt: "Youth ministry" },
+  { id: "outreach-1", src: outreach, alt: "Community outreach" },
+  { id: "outreach-2", src: outreach2, alt: "Community outreach Image 2" },
+  { id: "first-sunday", src: firstSunday, alt: "First Sunday" },
+  { id: "choir", src: choir, alt: "Choir" },
 ];
 
 const AboutSnippet = () => {
@@ -44,9 +50,11 @@ const AboutSnippet = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           loop
+          speed={800}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           navigation={{
             prevEl: ".about-prev",
@@ -56,43 +64,21 @@ const AboutSnippet = () => {
             el: ".about-pagination",
             clickable: true,
           }}
-          className="aspect-[4/3] w-full overflow-hidden rounded-2xl sm:aspect-[16/10] sm:rounded-3xl lg:aspect-[4/3]"
+          className="aspect4/3 w-full overflow-hidden rounded-2xl sm:aspect-16/10 sm:rounded-3xl lg:aspect-auto [&_.swiper-wrapper]:ease-[cubic-bezier(0.22,1,0.36,1)]"
         >
           {slides.map((slide) => (
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              loop
-              speed={800}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              navigation={{
-                prevEl: ".about-prev",
-                nextEl: ".about-next",
-              }}
-              pagination={{
-                el: ".about-pagination",
-                clickable: true,
-              }}
-              className="aspect-[4/3] w-full overflow-hidden rounded-2xl sm:aspect-[16/10] sm:rounded-3xl lg:aspect-[4/3] [&_.swiper-wrapper]:ease-[cubic-bezier(0.22,1,0.36,1)]"
-            >
-              {slides.map((slide) => (
-                <SwiperSlide key={slide.alt} className="h-full">
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    sizes="(max-width: 767px) 100vw, 55vw"
-                    className="h-full w-full object-cover"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <SwiperSlide key={slide.id} className="h-full">
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                sizes="(max-width: 767px) 100vw, 55vw"
+                className="h-full w-full object-cover"
+              />
+            </SwiperSlide>
           ))}
         </Swiper>
 
-        <div className="flex h-12 w-full max-w-sm items-center justify-between gap-3 rounded-full bg-muted px-3 sm:w-[70%] sm:max-w-md">
+        <div className="flex h-12 w-full max-w-sm items-center justify-between gap-3 rounded-full bg-muted px-3 sm:w-[30%] sm:max-w-md">
           <button
             type="button"
             aria-label="Previous slide"
