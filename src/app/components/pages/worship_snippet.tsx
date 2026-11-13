@@ -5,15 +5,12 @@ import {
   SunHorizonIcon,
 } from "@phosphor-icons/react";
 import Image from "next/image";
-import img1 from "@/assets/service-shots/Daddy_on_the_altar.jpeg";
-import img2 from "@/assets/service-shots/WhatsApp Image 2026-10-08 at 4.19.37 PM.jpeg";
-import img3 from "@/assets/service-shots/random_shot.jpeg";
-import img4 from "@/assets/service-shots/2random_shot.jpeg";
+import { images } from "@/lib/images";
 
-const programs = [
+export const programs = [
   {
     day: "First Day of the Month",
-    title: "Sunday Service",
+    title: " ",
     time: "7:00 AM – 8:00 AM",
     icon: SunHorizonIcon,
   },
@@ -37,8 +34,6 @@ const programs = [
   },
 ];
 
-const images = [img1, img2, img3, img4];
-
 const WorshipSnippet = () => {
   return (
     <section className="mx-auto w-full max-w-6xl px-5 py-16">
@@ -49,28 +44,30 @@ const WorshipSnippet = () => {
           <h6 className="mt-2 text-lg text-muted-foreground">Our Programs</h6>
 
           <div className="mt-8 flex flex-col gap-4">
-            {programs.map(({ day, title, time, icon: Icon }) => (
-              <div
-                key={day}
-                className="flex items-start gap-5  p-6 transition-all duration-300 hover:-translate-y-1 border rounded-3xl"
-              >
-                {/* <div className="flex size-20  shrink-0 items-center justify-center rounded-full">
-                  <Icon size={40} weight="duotone" />
-                </div> */}
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {programs.map(({ day, title, time, icon: Icon }) => (
+                <div
+                  key={day}
+                  className="flex flex-col items-start gap-4 rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Icon size={28} weight="duotone" />
+                  </div>
 
-                <div>
-                  <p className="text-sm font-medium text-primary">{day}</p>
-                  <h3 className="mt-1 text-xl font-bold">{title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{time}</p>
+                  <div>
+                    <p className="text-sm font-medium text-primary">{day}</p>
+                    <h3 className="mt-1 text-xl font-bold">{title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">{time}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Right: picture grid */}
         <div className="grid grid-cols-2 gap-4">
-          {images.map((src, i) => (
+          {images.worship.map(({ src, alt }, i) => (
             <div
               key={i}
               className={`relative overflow-hidden rounded-2xl ${
@@ -79,7 +76,7 @@ const WorshipSnippet = () => {
             >
               <Image
                 src={src}
-                alt={`Church program ${i + 1}`}
+                alt={alt}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"
               />

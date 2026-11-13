@@ -1,10 +1,10 @@
 "use client";
 import { motion, Variants } from "framer-motion";
-import { fade } from "@/lib/motion";
+import { fade, fadeUp } from "@/lib/motion";
 import Link from "next/link";
 import CustomBtn from "../components/common/CustomBtn";
 import { HandHeartIcon, YoutubeLogoIcon } from "@phosphor-icons/react";
-import home_background from "@/assets/home_background.jpg";
+import { images } from "@/lib/images";
 import Image from "next/image";
 import AboutSnippet from "../components/pages/about_snippet";
 
@@ -33,7 +33,7 @@ const Home = () => {
           transition={{ duration: 10, ease: "easeOut" }}
         >
           <Image
-            src={home_background}
+            src={images.backgrounds.home}
             alt="Home Background"
             fill
             priority
@@ -59,9 +59,14 @@ const Home = () => {
               variants={item}
               className="text-2xl font-bold tracking-widest"
             >
-              Welcome to New Dawn Assembly
+              Welcome to New Dawn Assembly,
             </motion.h3>
-
+            <motion.p
+              variants={item}
+              className="text-xl font-bold tracking-widest"
+            >
+              Lagos Province 72
+            </motion.p>
             <motion.h1
               variants={item}
               className="text-4xl md:text-7xl font-bold leading-tight"
@@ -105,18 +110,17 @@ const Home = () => {
       <LeadersSnippet />
 
       {/* Give */}
+
       <section id="give" className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <motion.div {...fade}>
-          <h2 className={`text-4xl mb-4`}>Give</h2>
+        <motion.div {...fadeUp}>
+          <h2 className="text-4xl mb-4">Give</h2>
           <p className="text-[#5b5850] mb-8">
             Your generosity fuels our mission and our community.
           </p>
-          <Link href="#">
-            <CustomBtn
-              children="Give online"
-              icon={<HandHeartIcon />}
-              iconPosition="right"
-            />
+          <Link href="/donations">
+            <CustomBtn icon={<HandHeartIcon />} iconPosition="right">
+              Give online
+            </CustomBtn>
           </Link>
         </motion.div>
       </section>

@@ -7,11 +7,11 @@ export const navItems = [
     href: "/about",
     icon: UserIcon,
   },
-  {
-    title: "Leaders",
-    href: "/leaders",
-    icon: UsersFourIcon,
-  },
+  // {
+  //   title: "Leaders",
+  //   href: "/leaders",
+  //   icon: UsersFourIcon,
+  // },
   {
     title: "Live Streams",
     href: "/live-streams",
