@@ -1,12 +1,22 @@
 "use client";
+
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import leader1 from "@/assets/leaders/Daddy.jpeg";
-import leader2 from "@/assets/leaders/Mummy.jpeg";
+import { images } from "@/lib/images";
+import CustomBtn from "../common/CustomBtn";
+import Link from "next/link";
 
 const leaders = [
-  { name: "Pastor Nelson Apata", role: "Pastor in Charge", image: leader1 },
-  { name: "Pastor's Wife", role: "Assistant Pastor", image: leader2 },
+  {
+    name: "Pastor Nelson Apata",
+    role: "Pastor in Charge",
+    image: images.leaders.pastor,
+  },
+  {
+    name: "Pastor's Wife",
+    role: "Assistant Pastor",
+    image: images.leaders.pastorWife,
+  },
 ];
 
 const container: Variants = {
@@ -16,18 +26,28 @@ const container: Variants = {
 
 const item: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
 };
 
 const LeadersSnippet = () => {
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 py-16">
-      <h2 className="text-center text-3xl font-bold md:text-5xl">
-        Meet our leaders
-      </h2>
+    <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 md:py-24">
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+          Meet Our Leaders
+        </h2>
+        <p className="mt-4 text-base leading-7 text-muted-foreground">
+          Meet the people dedicated to leading, serving, and growing our church
+          community.
+        </p>
+      </div>
 
       <motion.div
-        className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2"
+        className="mx-auto mt-10 grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -37,22 +57,33 @@ const LeadersSnippet = () => {
           <motion.div
             key={name}
             variants={item}
-            className="group relative aspect-4/5 overflow-hidden rounded-2xl"
+            className="group relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl bg-neutral-100 shadow-sm"
           >
             <Image
               src={image}
               alt={name}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(min-width: 640px) 384px, 90vw"
+              className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6 text-white">
-              <h3 className="text-xl font-bold md:text-2xl">{name}</h3>
-              <p className="mt-1 text-sm text-white/70">{role}</p>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+            <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+              <h3 className="text-xl font-bold text-white sm:text-2xl">
+                {name}
+              </h3>
+              <p className="mt-2 text-sm text-white/80">{role}</p>
             </div>
           </motion.div>
         ))}
       </motion.div>
+
+      <div className="mt-10 flex justify-center">
+        <Link href={`/leaders`}>
+          <CustomBtn>Meet Our Whole Team</CustomBtn>
+        </Link>
+      </div>
     </section>
   );
 };

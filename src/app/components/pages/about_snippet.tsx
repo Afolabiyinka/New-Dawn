@@ -7,26 +7,9 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { images } from "@/lib/images";
 
 import "swiper/css";
-
-import mensPicture from "@/assets/Men.jpeg";
-import womensPicture from "@/assets/Women.jpeg";
-import youthPicture from "@/assets/Youth.jpeg";
-import outreach from "@/assets/Outreach.jpeg";
-import outreach2 from "@/assets/OUTREACH2.jpeg";
-import firstSunday from "@/assets/Trad.jpeg";
-import choir from "@/assets/choir.jpeg";
-
-const slides = [
-  { id: "mens-ministry", src: mensPicture, alt: "Men's ministry" },
-  { id: "womens-ministry", src: womensPicture, alt: "Women's ministry" },
-  { id: "youth-ministry", src: youthPicture, alt: "Youth ministry" },
-  { id: "outreach-1", src: outreach, alt: "Community outreach" },
-  { id: "outreach-2", src: outreach2, alt: "Community outreach Image 2" },
-  { id: "first-sunday", src: firstSunday, alt: "First Sunday" },
-  { id: "choir", src: choir, alt: "Choir" },
-];
 
 const AboutSnippet = () => {
   return (
@@ -56,29 +39,39 @@ const AboutSnippet = () => {
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          navigation={{
-            prevEl: ".about-prev",
-            nextEl: ".about-next",
-          }}
-          pagination={{
-            el: ".about-pagination",
-            clickable: true,
-          }}
-          className="aspect4/3 w-full overflow-hidden rounded-2xl sm:aspect-16/10 sm:rounded-3xl lg:aspect-auto [&_.swiper-wrapper]:ease-[cubic-bezier(0.22,1,0.36,1)]"
+          navigation={{ prevEl: ".about-prev", nextEl: ".about-next" }}
+          pagination={{ el: ".about-pagination", clickable: true }}
+          className="aspect-4/3 w-full overflow-hidden rounded-2xl sm:aspect-16/10 sm:rounded-3xl lg:aspect-4/3 [&_.swiper-wrapper]:ease-[cubic-bezier(0.22,1,0.36,1)]"
         >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id} className="h-full">
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                sizes="(max-width: 767px) 100vw, 55vw"
-                className="h-full w-full object-cover"
-              />
+          {images.about.map((slide) => (
+            <SwiperSlide
+              key={slide.id}
+              className="relative h-full overflow-hidden"
+            >
+              {({ isActive }) => (
+                <motion.div
+                  className="absolute inset-0"
+                  initial={false}
+                  animate={{ scale: isActive ? 1 : 1.15 }}
+                  transition={
+                    isActive
+                      ? { duration: 5, ease: "easeOut" }
+                      : { duration: 0, delay: 0.8 }
+                  }
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    sizes="(min-width: 768px) 55vw, 90vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <div className="flex h-12 w-full max-w-sm items-center justify-between gap-3 rounded-full bg-muted px-3 sm:w-[30%] sm:max-w-md">
+        <div className="flex h-12 w-auto max-w-full items-center justify-between gap-3 rounded-full bg-muted px-3">
           <button
             type="button"
             aria-label="Previous slide"
@@ -87,7 +80,7 @@ const AboutSnippet = () => {
             <CaretLeftIcon size={22} weight="bold" />
           </button>
 
-          <div className="about-pagination flex min-w-0 flex-1 items-center justify-center gap-2 [&_.swiper-pagination-bullet]:size-2 [&_.swiper-pagination-bullet]:shrink-0 [&_.swiper-pagination-bullet]:cursor-pointer [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-muted-foreground/40 [&_.swiper-pagination-bullet]:transition-all [&_.swiper-pagination-bullet-active]:w-5 [&_.swiper-pagination-bullet-active]:bg-primary" />
+          <div className="about-pagination flex min-w-0 flex-1 items-center justify-center gap-1 sm:gap-2 [&_.swiper-pagination-bullet]:size-2 [&_.swiper-pagination-bullet]:shrink-0 [&_.swiper-pagination-bullet]:cursor-pointer [&_.swiper-pagination-bullet]:rounded-full [&_.swiper-pagination-bullet]:bg-muted-foreground/40 [&_.swiper-pagination-bullet]:transition-all [&_.swiper-pagination-bullet-active]:w-5 [&_.swiper-pagination-bullet-active]:bg-primary" />
 
           <button
             type="button"

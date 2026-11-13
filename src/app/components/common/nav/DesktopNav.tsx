@@ -19,7 +19,7 @@ const DesktopNav = () => {
               key={title}
               className={`flex items-center text-sm gap-2 transition-colors hover:underline hover:underline-offset-8 ${
                 pathname === href
-                  ? "underline underline-offset-8 decoration-2 decoration-primary/50"
+                  ? "underline underline-offset-4 decoration-2 decoration-primary/50"
                   : ""
               }`}
             >
@@ -32,7 +32,9 @@ const DesktopNav = () => {
           ))}
         </nav>
 
-        <Button>Contact Us</Button>
+        <Link href={`/contact`}>
+          <Button>Contact Us</Button>
+        </Link>
       </div>
     </div>
   );

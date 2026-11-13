@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import home_background from "@/assets/donation.jpg";
+import { images } from "@/lib/images";
 
-const whatsappNumber = "2348000000000";
+const whatsappNumber = "2349053825497";
 const whatsappMessage =
   "Hello, I just made a donation to New Dawn Assembly. Here is my payment confirmation.";
 
@@ -52,7 +52,7 @@ const Donations = () => {
         transition={{ duration: 10, ease: "easeOut" }}
       >
         <Image
-          src={home_background}
+          src={images.backgrounds.donations}
           alt="Donations Background"
           fill
           priority

@@ -4,7 +4,7 @@ import { YoutubeLogoIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import home_background from "@/assets/livestream.jpg";
+import { images } from "@/lib/images";
 
 const container: Variants = {
   hidden: {},
@@ -26,7 +26,7 @@ const LiveStreams = () => {
         transition={{ duration: 10, ease: "easeOut" }}
       >
         <Image
-          src={home_background}
+          src={images.backgrounds.liveStreams}
           alt="Home Background"
           fill
           priority
