@@ -1,6 +1,5 @@
 "use client";
 import Gallery from "@/app/components/pages/gallery";
-import WorshipSnippet from "@/app/components/pages/worship_snippet";
 import { fade, fadeUp, stagger, item } from "@/lib/motion";
 import { CheckIcon } from "@phosphor-icons/react/ssr";
 import { motion } from "framer-motion";
