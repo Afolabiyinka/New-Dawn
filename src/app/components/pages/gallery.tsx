@@ -1,19 +1,13 @@
 // Gallery.tsx
 import { images } from "@/lib/images";
 import Image from "next/image";
-
-const ratios = [
-  "aspect-[3/4]",
-  "aspect-square",
-  "aspect-[4/5]",
-  "aspect-[4/3]",
-  "aspect-[2/3]",
-  "aspect-[5/4]",
-];
+import { galleryRatios } from "@/lib/page-data";
 
 // stable pseudo-random pick per index
 const ratioFor = (i: number) =>
-  ratios[(Math.imul(i + 1, 2654435761) >>> 0) % ratios.length];
+  galleryRatios[
+    (Math.imul(i + 1, 2654435761) >>> 0) % galleryRatios.length
+  ];
 
 const Gallery = () => (
   <section id="gallery" className="bg-[#f6f3ec] pt-36 pb-24">

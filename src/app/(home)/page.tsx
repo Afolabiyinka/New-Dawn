@@ -3,7 +3,11 @@ import { motion, Variants } from "framer-motion";
 import { fade, fadeUp } from "@/lib/motion";
 import Link from "next/link";
 import CustomBtn from "../components/common/CustomBtn";
-import { HandHeartIcon, YoutubeLogoIcon } from "@phosphor-icons/react";
+import {
+  HandHeartIcon,
+  UserIcon,
+  YoutubeLogoIcon,
+} from "@phosphor-icons/react";
 import { images } from "@/lib/images";
 import Image from "next/image";
 import AboutSnippet from "../components/pages/about_snippet";
@@ -23,9 +27,9 @@ const item: Variants = {
 
 const Home = () => {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center">
       {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center text-center w-full overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center text-center w-[99%] rounded-2xl mt-2 overflow-hidden ">
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.15 }}
@@ -46,60 +50,58 @@ const Home = () => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="relative px-6 max-w-3xl text-white z-10"
+            className="relative px-6 max-w-3xl text-white z-10 flex flex-col items-center"
           >
-            <motion.p
-              variants={item}
-              className="uppercase tracking-[0.3em] text-sm mb-4 text-primary font-bold"
-            >
-              Sundays · 9:00 AM &amp; 11:30 AM
-            </motion.p>
+            {/* Eyebrow: who/where */}
+            <motion.div variants={item} className="mb-6 space-y-1">
+              {/* <p className="uppercase tracking-[0.3em] text-xs md:text-sm font-bold text-primary">
+                Welcome to New Dawn Assembly
+              </p> */}
+              <p className="uppercase tracking-widest text-xs md:text-lg text-white/70">
+                Lagos Province 72 · Zonal Headquarters
+              </p>
+            </motion.div>
 
-            <motion.h3
-              variants={item}
-              className="text-2xl font-bold tracking-widest"
-            >
-              Welcome to New Dawn Assembly,
-            </motion.h3>
-            <motion.p
-              variants={item}
-              className="text-xl font-bold tracking-widest"
-            >
-              Lagos Province 72
-            </motion.p>
+            {/* Headline */}
             <motion.h1
               variants={item}
-              className="text-4xl md:text-7xl font-bold leading-tight"
+              className="text-4xl md:text-7xl font-extrabold leading-tight"
             >
-              A place to belong, <br /> a faith to grow in.
+              A place to belong, <br className="hidden md:block" /> a faith to
+              grow in.
             </motion.h1>
+
+            {/* Service times, next to the CTA */}
+            <motion.p
+              variants={item}
+              className="mt-6 uppercase tracking-[0.2em] text-sm text-white/80"
+            >
+              Sundays · 8:00 AM &amp; 11:30 AM
+            </motion.p>
 
             <motion.div
               variants={item}
-              className="mt-8 flex flex-col md:flex-row gap-4 justify-center items-center"
+              className="mt-8 flex gap-2 md:gap-5 flex-col md:flex-row items-center justify-center"
+              // whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* <Link href="/visit">
-                  <CustomBtn children="Join us Sunday" />
-                </Link> */}
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link href="/live-streams">
-                  <CustomBtn
-                    size="lg"
-                    variant="secondary"
-                    children="Join us live"
-                    icon={<YoutubeLogoIcon weight="fill" fill="red" />}
-                    iconPosition="right"
-                  />
-                </Link>
-              </motion.div>
+              <Link href="/live-streams">
+                <CustomBtn
+                  size="lg"
+                  variant="secondary"
+                  children="Join us live"
+                  icon={<YoutubeLogoIcon weight="fill" fill="red" />}
+                  iconPosition="right"
+                />
+              </Link>
+              <Link href="/about">
+                <CustomBtn
+                  size="lg"
+                  variant="secondary"
+                  children="About Us"
+                  icon={<UserIcon />}
+                />
+              </Link>
             </motion.div>
           </motion.div>
         </div>

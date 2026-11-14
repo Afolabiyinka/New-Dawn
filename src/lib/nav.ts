@@ -1,17 +1,22 @@
 "use client"
-import {   TelevisionIcon, HandHeartIcon, UsersFourIcon, UserIcon } from "@phosphor-icons/react"
+import {   TelevisionIcon, HandHeartIcon, UsersFourIcon, UserIcon, VideoCameraIcon } from "@phosphor-icons/react"
 
 export const navItems = [
   {
-    title: "About Us",
+    title: "Who are we",
     href: "/about",
     icon: UserIcon,
   },
-  // {
-  //   title: "Leaders",
-  //   href: "/leaders",
-  //   icon: UsersFourIcon,
-  // },
+  {
+    title: "Leaders",
+    href: "/leaders",
+    icon: UsersFourIcon,
+  },
+  {
+    title: "Media",
+    href: "/media",
+    icon: VideoCameraIcon
+  },
   {
     title: "Live Streams",
     href: "/live-streams",

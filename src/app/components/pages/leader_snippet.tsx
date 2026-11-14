@@ -2,22 +2,9 @@
 
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
-import { images } from "@/lib/images";
 import CustomBtn from "../common/CustomBtn";
 import Link from "next/link";
-
-const leaders = [
-  {
-    name: "Pastor Nelson Apata",
-    role: "Pastor in Charge",
-    image: images.leaders.pastor,
-  },
-  {
-    name: "Pastor's Wife",
-    role: "Assistant Pastor",
-    image: images.leaders.pastorWife,
-  },
-];
+import { leaders } from "@/lib/page-data";
 
 const container: Variants = {
   hidden: {},
@@ -53,7 +40,7 @@ const LeadersSnippet = () => {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {leaders.map(({ name, role, image }) => (
+        {leaders.slice(0, 2).map(({ name, role, image }) => (
           <motion.div
             key={name}
             variants={item}
