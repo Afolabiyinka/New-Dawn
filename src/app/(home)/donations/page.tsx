@@ -6,23 +6,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { images } from "@/lib/images";
+import { donationAccounts } from "@/lib/page-data";
 
 const whatsappNumber = "2349053825497";
 const whatsappMessage =
   "Hello, I just made a donation to New Dawn Assembly. Here is my payment confirmation.";
-
-const accounts = [
-  {
-    bank: "Polaris Bank",
-    purpose: "Tithes & Offering",
-    number: "4091281426",
-  },
-  {
-    bank: "Zenith Bank",
-    purpose: "Project & Development",
-    number: "1226496990",
-  },
-];
 
 const container: Variants = {
   hidden: {},
@@ -93,7 +81,7 @@ const Donations = () => {
             variants={item}
             className="grid gap-4 md:grid-cols-2 text-left"
           >
-            {accounts.map(({ bank, purpose, number }) => (
+            {donationAccounts.map(({ bank, purpose, number }) => (
               <div
                 key={number}
                 className="rounded-lg border border-white/20 bg-white/10 p-5 backdrop-blur-md"

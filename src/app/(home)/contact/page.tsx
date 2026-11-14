@@ -1,35 +1,10 @@
 "use client";
 import { Button } from "@/app/components/ui/button";
-import {
-  InstagramLogoIcon,
-  PaperPlaneRightIcon,
-  TiktokLogoIcon,
-  WhatsappLogoIcon,
-  YoutubeLogoIcon,
-} from "@phosphor-icons/react";
+import { PaperPlaneRightIcon, WhatsappLogoIcon } from "@phosphor-icons/react";
+import { EMAIL, PHONE_DISPLAY, socialLinks } from "@/lib/page-data";
 
 import { useState } from "react";
 
-const PHONE_DISPLAY = "0905 382 5497";
-const EMAIL = "newdawnassemblylp72@gmail.com";
-
-export const socials = [
-  {
-    label: "Instagram",
-    href: "https://instagram.com/rccgnewdawnassemblylp72",
-    Icon: InstagramLogoIcon,
-  },
-  {
-    label: "YouTube",
-    href: "https://youtube.com/@rccgnewdawnassemblylp72",
-    Icon: YoutubeLogoIcon,
-  },
-  {
-    label: "TikTok",
-    href: "https://tiktok.com/@rccgnewdawnassemblylp72",
-    Icon: TiktokLogoIcon,
-  },
-];
 const field =
   "w-full border-b border-[#1F3D2B]/30 bg-transparent py-3 text-lg text-[#1F3D2B] placeholder:text-[#5b5850]/50 focus:border-[#1F3D2B] focus:outline-none";
 
@@ -97,7 +72,7 @@ const Contact = () => {
                 Follow us @rccgnewdawnassemblylp72
               </dt>
               <dd className="mt-3 flex gap-4">
-                {socials.map(({ label, href, Icon }) => (
+                {socialLinks.map(({ label, href, Icon }) => (
                   <a
                     key={label}
                     href={href}

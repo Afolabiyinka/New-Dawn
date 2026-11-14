@@ -6,7 +6,9 @@ import Footer from "../components/common/nav/footer";
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen h-full flex-col w-full">
-      <NavLayout />
+      <header className="sticky top-0 z-50 w-full">
+        <NavLayout />
+      </header>
 
       <main className="w-full flex-1">{children}</main>
       <Footer />

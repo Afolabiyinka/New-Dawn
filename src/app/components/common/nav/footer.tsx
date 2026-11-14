@@ -1,134 +1,109 @@
-import { socials } from "@/app/(home)/contact/page";
-import { programs } from "../../pages/worship_snippet";
-import Logo from "../Logo";
-import {
-  ClockIcon,
-  EnvelopeSimpleIcon,
-  MapPinIcon,
-  PhoneIcon,
-  ArrowUpRightIcon,
-} from "@phosphor-icons/react/dist/ssr";
-import { Button } from "../../ui/button";
+"use client";
+
+import Link from "next/link";
+import { EMAIL, PHONE_DISPLAY, socialLinks } from "@/lib/page-data";
+import { ArrowUpIcon } from "@phosphor-icons/react/dist/ssr";
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 const Footer = () => {
   return (
-    <footer id="visit" className="border-t border-black/10 bg-[#faf9f6]">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
-          {/* Brand */}
-          <div className="space-y-6">
-            <Logo />
+    <footer
+      id="visit"
+      className="relative rounded-t-[3rem] border-t border-black/10 bg-white text-black md:rounded-t-[5rem]"
+    >
+      <div className="mx-auto max-w-7xl px-6 pb-10 pt-20 md:pt-28">
+        <div className="grid gap-12 md:grid-cols-3 md:gap-10">
+          {/* Keep in touch */}
+          <div className="space-y-5">
+            <h3 className="text-2xl font-semibold text-black">Keep in Touch</h3>
+            <a
+              href="tel:+2348000000000"
+              className="block text-black/60 transition hover:text-black"
+            >
+              {PHONE_DISPLAY}
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="block text-black/60 transition hover:text-black"
+            >
+              {EMAIL}
+            </a>
 
-            <p className="max-w-sm text-sm leading-7 text-black/60">
-              A place to encounter God, grow in faith, and build meaningful
-              relationships. We would love to worship with you.
-            </p>
-
-            <div className="flex items-start gap-3 text-sm leading-6 text-black/60">
-              <MapPinIcon
-                size={19}
-                weight="regular"
-                className="mt-0.5 shrink-0 text-black"
-              />
-              <span className="max-w-xs">
-                18 Popoola Oladunni Street, Off Isijola Street, Ikotun, Lagos.
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2 pt-1">
-              {socials.map(({ label, href, Icon }) => (
+            {/* Socials */}
+            <div className="flex items-center gap-3 pt-2">
+              {socialLinks.map(({ label, href, Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex size-10 items-center justify-center rounded-full border border-black/10 text-black/60 transition-all duration-300 hover:border-black hover:bg-black hover:text-white"
+                  className="flex size-11 items-center justify-center rounded-full bg-black text-white shadow-lg shadow-black/20 transition-all duration-300 hover:-translate-y-1.5 hover:scale-110 hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.5)]"
                 >
-                  <Icon size={18} />
+                  <Icon size={20} weight="fill" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Service times */}
-          <div>
-            <h3 className="mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-black">
-              Join us for worship
+          {/* Location */}
+          <div className="space-y-5">
+            <h3 className="text-2xl font-semibold text-black">
+              Church Location
             </h3>
-
-            <ul className="space-y-5">
-              {programs.map((program, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <ClockIcon
-                    size={19}
-                    className="mt-0.5 shrink-0 text-black/50"
-                  />
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-black">
-                      {program.day}
-                    </p>
-                    <p className="text-sm text-black/50">{program.time}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <p className="max-w-xs leading-8 text-black/60">
+              18 Popoola Oladunni Street, Off Isijola Street, Ikotun, Lagos.
+            </p>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-black">
-              Get in touch
+          {/* Stay connected */}
+          <div className="space-y-5">
+            <h3 className="text-2xl font-semibold text-black">
+              Stay Connected
             </h3>
-
-            <ul className="space-y-5">
-              <li>
-                <a
-                  href="mailto:newdawn@gmail.com"
-                  className="group flex items-center gap-3 text-sm text-black/60 transition hover:text-black"
-                >
-                  <EnvelopeSimpleIcon size={19} className="shrink-0" />
-                  <span>newdawn@gmail.com</span>
-                  <ArrowUpRightIcon
-                    size={14}
-                    className="opacity-0 transition group-hover:opacity-100"
-                  />
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="tel:+2348000000000"
-                  className="group flex items-center gap-3 text-sm text-black/60 transition hover:text-black"
-                >
-                  <PhoneIcon size={19} className="shrink-0" />
-                  <span>+234 800 000 0000</span>
-                  <ArrowUpRightIcon
-                    size={14}
-                    className="opacity-0 transition group-hover:opacity-100"
-                  />
-                </a>
-              </li>
-            </ul>
+            <p className="max-w-sm leading-8 text-black/60">
+              Sign up with your email address to receive newsletters from New
+              Dawn Assembly.
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-black/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-black/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} New Dawn Assembly. All rights reserved.
+        {/* Bottom row */}
+        <div className="mt-20 flex flex-col gap-6 border-t border-black/10 pt-8 md:flex-row md:items-center md:justify-between">
+          <nav className="flex flex-wrap gap-8">
+            {navLinks.map(({ label, href }, i) => (
+              <Link
+                key={label}
+                href={href}
+                className={`text-sm font-semibold uppercase tracking-wide transition hover:text-black ${
+                  i === 0 ? "text-black" : "text-black/60"
+                }`}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          <p className="text-sm text-black/50">
+            © {new Date().getFullYear()} - All Rights Reserved - New Dawn
+            Assembly.
           </p>
-
-          <Button
-            variant={`ghost`}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            Back to top ↑
-          </Button>
         </div>
       </div>
+
+      {/* Back to top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+        className="fixed bottom-8 right-8 z-50 flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-xl transition hover:scale-110"
+      >
+        <ArrowUpIcon size={24} weight="bold" />
+      </button>
     </footer>
   );
 };

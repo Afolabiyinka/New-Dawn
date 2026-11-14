@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Barlow, Inter } from "next/font/google";
+import { Inter, Cause } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
-const heading = Barlow({
+const heading = Cause({
   subsets: ["latin"],
   weight: ["600", "700", "800"],
   variable: "--font-heading",

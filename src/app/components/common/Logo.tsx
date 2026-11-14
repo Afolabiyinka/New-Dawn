@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { images } from "@/lib/images";
 import { usePathname } from "next/navigation";
@@ -9,7 +8,11 @@ const Logo = () => {
   return (
     <Link className="flex items-center gap-2" href={`/`}>
       <Image src={images.logo} alt="Logo" className="h-10 w-10 rounded-full" />
-      <p className={`text-lg lg:text-sm font-extrabold`}>New Dawn Assembly</p>
+      <p
+        className={`text-md lg:text-sm font-extrabold uppercase tracking-wide`}
+      >
+        New Dawn Assembly
+      </p>
     </Link>
   );
 };

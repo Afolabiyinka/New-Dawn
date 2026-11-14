@@ -1,110 +1,114 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { images } from "@/lib/images";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/app/components/ui/dialog";
+import { leaders } from "@/lib/page-data";
+import { motion, MotionConfig } from "framer-motion";
+import { fadeUp } from "@/lib/motion";
 
-const leaders = [
-  {
-    name: "Pastor Nelson Apata",
-    role: "Pastor in Charge",
-    image: images.leaders.pastor,
-    description:
-      "Pastor Nelson serves as Pastor in Charge, helping guide the congregation and ministry of New Dawn Assembly.",
-  },
-  {
-    name: "Pastor's Wife",
-    role: "Assistant Pastor",
-    image: images.leaders.pastorWife,
-    description:
-      "As Assistant Pastor, she serves with Pastor Nelson in the leadership of New Dawn Assembly.",
-  },
-];
+type Leader = (typeof leaders)[number];
+
+function LeaderCard({
+  leader,
+  featured = false,
+  index = 0,
+}: {
+  leader: Leader;
+  featured?: boolean;
+  index?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+        delay: Math.min(index, 3) * 0.08,
+      }}
+      className="group text-left"
+    >
+      <span
+        className={`relative block w-full overflow-hidden rounded-3xl bg-black/5 ${
+          featured ? "aspect-4/5 md:aspect-3/4" : "aspect-3/4"
+        }`}
+      >
+        <Image
+          src={leader.image}
+          alt={leader.name}
+          fill
+          priority={featured}
+          sizes={
+            featured
+              ? "(min-width: 768px) 50vw, 100vw"
+              : "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+          }
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+
+        {featured && (
+          <>
+            <span className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+            <span className="absolute inset-x-0 bottom-0 block p-6 text-white md:p-8">
+              <span className="block text-3xl font-bold md:text-4xl">
+                {leader.name}
+              </span>
+              <span className="mt-1 block text-sm font-semibold uppercase tracking-widest text-primary">
+                {leader.role}
+              </span>
+              <span className="mt-3 block max-w-md text-sm text-white/80">
+                {leader.description}
+              </span>
+            </span>
+          </>
+        )}
+      </span>
+
+      {!featured && (
+        <span className="mt-4 block">
+          <span className="block text-lg font-bold leading-tight">
+            {leader.name}
+          </span>
+          <span className="mt-1 block text-sm text-[#5b5850]">
+            {leader.role}
+          </span>
+        </span>
+      )}
+    </motion.div>
+  );
+}
 
 export default function LeadersPage() {
-  const [selectedLeader, setSelectedLeader] = useState<
-    (typeof leaders)[number] | null
-  >(null);
+  const featured = leaders.slice(0, 2);
+  const rest = leaders.slice(2);
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-5 pb-20 pt-32 md:pb-24">
-      <header className="mx-auto max-w-3xl text-center">
-        <h1 className="text-4xl font-bold md:text-5xl">Meet our leaders</h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5b5850]">
-          Pastor Nelson Apata and his wife serve New Dawn Assembly as Pastor in
-          Charge and Assistant Pastor.
-        </p>
-      </header>
+    <MotionConfig reducedMotion="user">
+      <section className="mx-auto w-full max-w-6xl px-5 pb-20 pt-32 md:pb-24">
+        <motion.div {...fadeUp} className="mx-auto max-w-3xl text-center">
+          <h1 className="text-4xl font-bold md:text-5xl">Meet our leaders</h1>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5b5850]">
+            Pastor Nelson Apata and his wife serve New Dawn Assembly as Pastor
+            in Charge and Assistant Pastor.
+          </p>
+        </motion.div>
 
-      <div className="mt-12 grid grid-cols-1 gap-12 md:mt-16 md:grid-cols-2 md:gap-8">
-        {leaders.map((leader) => (
-          <button
-            key={leader.name}
-            type="button"
-            aria-label={`View profile for ${leader.name}`}
-            aria-haspopup="dialog"
-            onClick={() => setSelectedLeader(leader)}
-            className="group flex flex-col items-center text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-          >
-            <span className="relative block size-40 overflow-hidden rounded-full ring-4 ring-primary/20 md:size-48">
-              <Image
-                src={leader.image}
-                alt={leader.name}
-                fill
-                sizes="(min-width: 768px) 192px, 160px"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </span>
-            <span className="mt-5 block text-2xl font-bold">{leader.name}</span>
-            <span className="mt-1 block text-sm text-[#5b5850]">
-              {leader.role}
-            </span>
-            <span className="mt-3 block text-sm underline underline-offset-4 decoration-primary/60">
-              View profile
-            </span>
-          </button>
-        ))}
-      </div>
+        {/* Featured: first 2 */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+          {featured.map((leader, i) => (
+            <LeaderCard key={leader.name} leader={leader} featured index={i} />
+          ))}
+        </div>
 
-      <Dialog
-        open={selectedLeader !== null}
-        onOpenChange={(open) => {
-          if (!open) setSelectedLeader(null);
-        }}
-      >
-        {selectedLeader && (
-          <DialogContent className="max-h-[calc(100dvh-2rem)] max-w-3xl overflow-y-auto p-0 sm:max-w-3xl">
-            <div className="flex flex-col md:flex-row">
-              <div className="relative aspect-[4/3] w-full md:aspect-auto md:min-h-[30rem] md:w-1/2 md:shrink-0">
-                <Image
-                  src={selectedLeader.image}
-                  alt={selectedLeader.name}
-                  fill
-                  sizes="(min-width: 768px) 24rem, 100vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex flex-col justify-center p-6 pt-12 sm:p-8 sm:pt-12 md:w-1/2">
-                <DialogTitle className="text-3xl font-bold leading-tight">
-                  {selectedLeader.name}
-                </DialogTitle>
-                <DialogDescription className="mt-3 text-base font-semibold text-primary">
-                  {selectedLeader.role}
-                </DialogDescription>
-                <p className="mt-5 text-base leading-relaxed text-[#5b5850]">
-                  {selectedLeader.description}
-                </p>
-              </div>
-            </div>
-          </DialogContent>
+        {/* Everyone else */}
+        {rest.length > 0 && (
+          <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 md:gap-x-6 lg:grid-cols-4">
+            {rest.map((leader, i) => (
+              <LeaderCard key={leader.name} leader={leader} index={i} />
+            ))}
+          </div>
         )}
-      </Dialog>
-    </section>
+      </section>
+    </MotionConfig>
   );
 }

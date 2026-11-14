@@ -15,8 +15,14 @@ import donationBackground from "@/assets/donation.jpg";
 import homeBackground from "@/assets/home_background.jpg";
 import liveStreamsBackground from "@/assets/livestream.jpg";
 import churchLogo from "@/assets/RCCG Logo Sticker – Redemption Store.jpg";
+
+//Leaders
 import pastor from "@/assets/leaders/Daddy.jpeg";
 import pastorWife from "@/assets/leaders/Mummy.jpeg";
+import pastorChris from "@/assets/leaders/pastor chris.jpeg";
+import ministerTosin from "@/assets/leaders/minister_tosin.jpeg";
+import ministerShoniran from "@/assets/leaders/minister_shoniran.jpeg"
+import ministerJames from "@/assets/leaders/minister james.jpeg";
 import pastorAtService from "@/assets/service-shots/Daddy_on_the_altar.jpeg";
 import servicePhoto from "@/assets/service-shots/WhatsApp Image 2026-10-08 at 4.19.37 PM.jpeg";
 import servicePhotoTwo from "@/assets/service-shots/random_shot.jpeg";
@@ -32,6 +38,10 @@ export const images = {
   leaders: {
     pastor,
     pastorWife,
+    pastorChris,
+    ministerTosin,
+    ministerShoniran,
+    ministerJames,
   },
   about: [
     { id: "mens-ministry", src: mensPicture, alt: "Men's ministry" },

@@ -1,7 +1,6 @@
 "use client";
 
 import { fade } from "@/lib/motion";
-import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,15 +9,17 @@ import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { images } from "@/lib/images";
 
 import "swiper/css";
+import Link from "next/link";
+import CustomBtn from "../common/CustomBtn";
 
 const AboutSnippet = () => {
   return (
     <section
       id="about"
-      className="flex min-h-screen w-full flex-col items-center justify-center gap-10 px-5 py-16 text-left sm:px-8 sm:py-20 md:flex-row md:gap-10 md:px-10 lg:gap-16 lg:py-24"
+      className="flex min-h-screen w-full flex-col items-center justify-center gap-10 px-5 py-16 text-left sm:px-8 sm:py-20 md:flex-row md:gap-10 md:px-24 lg:gap-16 lg:py-24"
     >
       <motion.div {...fade} className="w-full max-w-xl md:w-[45%] md:flex-none">
-        <h2 className="mb-4 text-3xl font-extrabold text-primary  sm:text-4xl lg:text-5xl">
+        <h2 className="mb-4 text-3xl font-extrabold text-primary sm:text-4xl lg:text-5xl">
           One Big Family
         </h2>
 
@@ -27,6 +28,10 @@ const AboutSnippet = () => {
           and serving our community. Whoever you are, wherever you are on your
           journey, there is a seat for you.
         </p>
+
+        <Link href="/about" className="mt-6 inline-block">
+          <CustomBtn size="lg" children="Learn more about us" />
+        </Link>
       </motion.div>
 
       <div className="flex w-full min-w-0 flex-col items-center gap-4 md:flex-1">
