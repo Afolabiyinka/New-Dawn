@@ -5,12 +5,10 @@ import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
 const NavLayout = () => {
-  const isMobile = useIsMobile(1024);
+  const isMobile = useIsMobile();
   return (
     <div className="bg-background/50 backdrop-blur-lg ">
-      <DesktopNav />
-
-      {isMobile && <MobileNav />}
+      {isMobile ? <MobileNav /> : <DesktopNav />}
     </div>
   );
 };

@@ -83,7 +83,7 @@ const Home = () => {
               variants={item}
               className="mt-8 flex gap-2 md:gap-5 flex-col md:flex-row items-center justify-center"
               // whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              // whileTap={{ scale: 0.95 }}
             >
               <Link href="/live-streams">
                 <CustomBtn
