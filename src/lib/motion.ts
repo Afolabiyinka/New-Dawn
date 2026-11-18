@@ -1,3 +1,5 @@
+import { Variants } from "motion";
+
 export  const fade = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -20,4 +22,47 @@ export const stagger = {
 export const item = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+
+//Navbar Motion Variants
+
+export const linkVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+export const menuVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+      staggerChildren: 0.08,
+      delayChildren: 0.15,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.2,
+      ease: "easeIn",
+    },
+  },
 };

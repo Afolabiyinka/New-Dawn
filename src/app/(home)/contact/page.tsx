@@ -116,13 +116,8 @@ const Contact = () => {
             onChange={update("message")}
             className={field}
           />
-          {/* <button
-            type="submit"
-            className="rounded-md bg-[#1F3D2B] px-6 py-3 text-white transition hover:bg-[#2a5239]"
-          >
-            Send
-          </button> */}
-          <div className="flex gap-3">
+
+          <div className="flex flex-col md:flex-row gap-3">
             <Button>
               Send through email <PaperPlaneRightIcon />
             </Button>

@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import Logo from "../Logo";
 import MenuButton from "../menubutton";
 import { navItems } from "@/lib/nav";
+import Link from "next/link";
+import { linkVariants, menuVariants } from "@/lib/motion";
+import { Button } from "../../ui/button";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -23,9 +26,11 @@ const MobileNav = () => {
     };
   }, [open]);
 
+  const MotionLink = motion.create(Link);
+
   return (
     <>
-      <div className="flex w-full items-center justify-between bg-background/90 p-3 backdrop-blur-sm">
+      <div className="flex w-full items-center justify-between bg-background/90 p-5 backdrop-blur-sm">
         <Logo />
         <MenuButton open={open} onClick={() => setOpen((o) => !o)} />
       </div>
@@ -36,10 +41,10 @@ const MobileNav = () => {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="fixed inset-0 z-50 flex h-dvh w-screen flex-col items-center justify-center bg-background"
           >
             <div className="flex flex-col items-center gap-10">
@@ -47,13 +52,12 @@ const MobileNav = () => {
                 const isActive = pathname === href;
 
                 return (
-                  <motion.a
+                  <MotionLink
                     key={href}
                     href={href}
                     onClick={() => setOpen(false)}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + i * 0.08 }}
+                    variants={linkVariants}
+                    whileTap={{ scale: 0.97 }}
                     className={`flex items-center gap-2 text-3xl tracking-tight transition ${
                       isActive
                         ? "underline underline-offset-8 decoration-2 decoration-primary/50"
@@ -65,10 +69,17 @@ const MobileNav = () => {
                       weight={isActive ? "bold" : "regular"}
                     />
                     {title}
-                  </motion.a>
+                  </MotionLink>
                 );
               })}
             </div>
+            <Link
+              href={`/contact`}
+              onClick={() => setOpen(false)}
+              className="mt-10"
+            >
+              <Button>Contact Us</Button>
+            </Link>
           </motion.nav>
         )}
       </AnimatePresence>

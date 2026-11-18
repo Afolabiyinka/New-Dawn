@@ -43,17 +43,17 @@ const LiveStreams = () => {
         >
           <motion.h1
             variants={item}
-            className="text-4xl tracking-widest text-primary"
+            className="md:text-5xl text-3xl  tracking-widest text-primary"
           >
             LIVESTREAM
           </motion.h1>
 
-          <motion.h4
+          {/* <motion.h4
             variants={item}
             className="underline underline-offset-8 decoration-2 decoration-primary text-2xl"
           >
             Worship with us, Anywhere
-          </motion.h4>
+          </motion.h4> */}
 
           <motion.p
             variants={item}

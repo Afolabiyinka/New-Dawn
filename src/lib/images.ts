@@ -9,10 +9,11 @@ import outreach3 from "@/assets/Outreach3.jpeg";
 import firstSunday from "@/assets/Trad.jpeg";
 import womensPicture from "@/assets/Women.jpeg";
 import youthPicture from "@/assets/Youth.jpeg";
+import eldersPicture from "@/assets/elders.jpeg"
 import choir from "@/assets/choir.jpeg";
 import choirPose from "@/assets/choir_pose.jpeg";
 import donationBackground from "@/assets/donation.jpg";
-import homeBackground from "@/assets/home_background.jpg";
+import homeBackground from "@/assets/leaders/THE PEOPLE OF A RENEWED DESTINY.png";
 import liveStreamsBackground from "@/assets/livestream.jpg";
 import churchLogo from "@/assets/RCCG Logo Sticker – Redemption Store.jpg";
 
@@ -47,6 +48,7 @@ export const images = {
     { id: "mens-ministry", src: mensPicture, alt: "Men's ministry" },
     { id: "womens-ministry", src: womensPicture, alt: "Women's ministry" },
     { id: "youth-ministry", src: youthPicture, alt: "Youth ministry" },
+    { id: "elders-ministry", src: eldersPicture, alt: "Elders ministry" },
     { id: "outreach-1", src: outreach, alt: "Community outreach" },
     { id: "choir", src: choirPose, alt: "Church choir" },
     { id: "drama", src: drama3, alt: "Church drama team" },

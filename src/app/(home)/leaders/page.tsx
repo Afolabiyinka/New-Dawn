@@ -89,7 +89,7 @@ export default function LeadersPage() {
           <h1 className="text-4xl font-bold md:text-5xl">Meet our leaders</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-[#5b5850]">
             Pastor Nelson Apata and his wife serve New Dawn Assembly as Pastor
-            in Charge and Assistant Pastor.
+            in Charge of zona area and Assistant Pastor.
           </p>
         </motion.div>
 

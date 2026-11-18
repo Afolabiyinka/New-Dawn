@@ -8,7 +8,7 @@ const DesktopNav = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full  hidden lg:flex items-center justify-around gap-8  p-4 px-4  md:flex top-0  backdrop-blur-lg">
+    <div className="w-full items-center justify-around gap-8  p-4 px-4 flex top-0  backdrop-blur-lg">
       <Logo />
 
       <nav className="flex gap-10">
